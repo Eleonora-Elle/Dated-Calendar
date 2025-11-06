@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/index.css"/>
+    <script src="./scripts/index.js" type="module"></script>
+    <title>Dated - Calendar</title>
+    <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml"/>
+</head>
+
+<body>
+  <div class="app">
+    <div class="sidebar desktop-only">
+      <div class="sidebar__logo">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar">
+          <path d="M8 2v4"></path>
+          <path d="M16 2v4"></path>
+          <rect width="18" height="18" x="3" y="4" rx="2"></rect>
+          <path d="M3 10h18"></path>
+        </svg>
+        <span class="sidebar__title">Dated - Calendar</span>
+      </div>
+
+      <button class="button button--primary button--lg" data-event-create-button="">Create event</button>
+
+      <div class="mini-calendar" data-mini-calendar="">
+        <div class="mini-calendar__header">
+          <time class="mini-calendar__date" data-mini-calendar-date="">October 2025</time>
+
+          <div class="mini-calendar__controls">
+            <button class="button button--icon button--secondary button--sm" data-mini-calendar-previous-button="">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="button__icon">
+                <path d="m15 18-6-6 6-6"></path>
+              </svg>
+            </button>
+
+            <button class="button button--icon button--secondary button--sm" data-mini-calendar-next-button="">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="button__icon">
+                <path d="m9 18 6-6-6-6"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="mini-calendar__content">
+          <ul class="mini-calendar__day-of-week-list">
+            <li class="mini-calendar__day-of-week">M</li>
+            <li class="mini-calendar__day-of-week">T</li>
+            <li class="mini-calendar__day-of-week">W</li>
+            <li class="mini-calendar__day-of-week">T</li>
+            <li class="mini-calendar__day-of-week">F</li>
+            <li class="mini-calendar__day-of-week">S</li>
+            <li class="mini-calendar__day-of-week">S</li>
+          </ul>
+
+          <ul class="mini-calendar__day-list" data-mini-calendar-day-list=""><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm mini-calendar__day--other button--secondary" data-mini-calendar-day="">28</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm mini-calendar__day--other button--secondary" data-mini-calendar-day="">29</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm mini-calendar__day--other button--secondary" data-mini-calendar-day="">30</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm button--secondary" data-mini-calendar-day="">1</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm button--secondary" data-mini-calendar-day="">2</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm button--secondary" data-mini-calendar-day="">3</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm button--secondary" data-mini-calendar-day="">4</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm button--secondary" data-mini-calendar-day="">5</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm button--secondary" data-mini-calendar-day="">6</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm button--secondary" data-mini-calendar-day="">7</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm button--secondary" data-mini-calendar-day="">8</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm button--secondary" data-mini-calendar-day="">9</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm button--secondary" data-mini-calendar-day="">10</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm button--secondary" data-mini-calendar-day="">11</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm button--secondary" data-mini-calendar-day="">12</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm button--secondary" data-mini-calendar-day="">13</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm button--secondary" data-mini-calendar-day="">14</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm button--secondary" data-mini-calendar-day="">15</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm button--secondary" data-mini-calendar-day="">16</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm button--secondary" data-mini-calendar-day="">17</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm button--secondary" data-mini-calendar-day="">18</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm button--secondary" data-mini-calendar-day="">19</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm button--secondary" data-mini-calendar-day="">20</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm button--primary" data-mini-calendar-day="">21</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm button--secondary" data-mini-calendar-day="">22</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm button--secondary" data-mini-calendar-day="">23</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm button--secondary" data-mini-calendar-day="">24</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm button--secondary" data-mini-calendar-day="">25</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm button--secondary" data-mini-calendar-day="">26</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm button--secondary" data-mini-calendar-day="">27</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm button--secondary" data-mini-calendar-day="">28</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm button--secondary" data-mini-calendar-day="">29</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm button--secondary" data-mini-calendar-day="">30</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm button--secondary" data-mini-calendar-day="">31</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm mini-calendar__day--other button--secondary" data-mini-calendar-day="">1</button>
+    </li></ul>
+        </div>
+      </div>
+    </div>
+    <main class="main">
+      <div class="nav">
+        <button class="button button--icon button--secondary mobile-only" data-hamburger-button="">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="button__icon">
+            <line x1="4" x2="20" y1="12" y2="12"></line>
+            <line x1="4" x2="20" y1="6" y2="6"></line>
+            <line x1="4" x2="20" y1="18" y2="18"></line>
+          </svg>
+        </button>
+
+        <div class="nav__date-info">
+          <div class="nav__controls">
+            <button class="button button--secondary desktop-only" data-nav-today-button="">Today</button>
+            <button class="button button--icon button--secondary mobile-only" data-nav-today-button="">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="button__icon">
+                <path d="M8 2v4"></path>
+                <path d="M16 2v4"></path>
+                <rect width="18" height="18" x="3" y="4" rx="2"></rect>
+                <path d="M3 10h18"></path>
+                <path d="M8 14h.01"></path>
+                <path d="M12 14h.01"></path>
+                <path d="M16 14h.01"></path>
+                <path d="M8 18h.01"></path>
+                <path d="M12 18h.01"></path>
+                <path d="M16 18h.01"></path>
+              </svg>
+            </button>
+
+            <div class="nav__arrows">
+              <button class="button button--icon button--secondary" data-nav-previous-button="">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="button__icon">
+                  <path d="m15 18-6-6 6-6"></path>
+                </svg>
+              </button>
+
+              <button class="button button--icon button--secondary" data-nav-next-button="">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="button__icon">
+                  <path d="m9 18 6-6-6-6"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <time class="nav__date" data-nav-date="">October 2025</time>
+        </div>
+
+        <div class="select desktop-only">
+          <select class="select__select" data-view-select="">
+            <option value="day">Day</option>
+            <option value="week">Week</option>
+            <option value="month" selected="">Month</option>
+          </select>
+
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="select__icon">
+            <path d="m6 9 6 6 6-6"></path>
+          </svg>
+        </div>
+      </div>
+      <div class="calendar" data-calendar=""><div class="week-calendar" data-week-calendar="">
+      <ul class="week-calendar__day-of-week-list" data-week-calendar-day-of-week-list="">
+      <li class="week-calendar__day-of-week" data-week-calendar-day-of-week="">
+      <button class="week-calendar__day-of-week-button" data-week-calendar-day-of-week-button="">
+        <span class="week-calendar__day-of-week-day" data-week-calendar-day-of-week-day="">Sun</span>
+        <span class="week-calendar__day-of-week-number" data-week-calendar-day-of-week-number="">19</span>
+      </button>
+    </li><li class="week-calendar__day-of-week" data-week-calendar-day-of-week="">
+      <button class="week-calendar__day-of-week-button" data-week-calendar-day-of-week-button="">
+        <span class="week-calendar__day-of-week-day" data-week-calendar-day-of-week-day="">Mon</span>
+        <span class="week-calendar__day-of-week-number" data-week-calendar-day-of-week-number="">20</span>
+      </button>
+    </li><li class="week-calendar__day-of-week" data-week-calendar-day-of-week="">
+      <button class="week-calendar__day-of-week-button week-calendar__day-of-week-button--selected" data-week-calendar-day-of-week-button="">
+        <span class="week-calendar__day-of-week-day" data-week-calendar-day-of-week-day="">Tue</span>
+        <span class="week-calendar__day-of-week-number" data-week-calendar-day-of-week-number="">21</span>
+      </button>
+    </li><li class="week-calendar__day-of-week" data-week-calendar-day-of-week="">
+      <button class="week-calendar__day-of-week-button" data-week-calendar-day-of-week-button="">
+        <span class="week-calendar__day-of-week-day" data-week-calendar-day-of-week-day="">Wed</span>
+        <span class="week-calendar__day-of-week-number" data-week-calendar-day-of-week-number="">22</span>
+      </button>
+    </li><li class="week-calendar__day-of-week" data-week-calendar-day-of-week="">
+      <button class="week-calendar__day-of-week-button" data-week-calendar-day-of-week-button="">
+        <span class="week-calendar__day-of-week-day" data-week-calendar-day-of-week-day="">Thu</span>
+        <span class="week-calendar__day-of-week-number" data-week-calendar-day-of-week-number="">23</span>
+      </button>
+    </li><li class="week-calendar__day-of-week" data-week-calendar-day-of-week="">
+      <button class="week-calendar__day-of-week-button" data-week-calendar-day-of-week-button="">
+        <span class="week-calendar__day-of-week-day" data-week-calendar-day-of-week-day="">Fri</span>
+        <span class="week-calendar__day-of-week-number" data-week-calendar-day-of-week-number="">24</span>
+      </button>
+    </li><li class="week-calendar__day-of-week" data-week-calendar-day-of-week="">
+      <button class="week-calendar__day-of-week-button" data-week-calendar-day-of-week-button="">
+        <span class="week-calendar__day-of-week-day" data-week-calendar-day-of-week-day="">Sat</span>
+        <span class="week-calendar__day-of-week-number" data-week-calendar-day-of-week-number="">25</span>
+      </button>
+    </li></ul>
+
+      <ul class="week-calendar__all-day-list" data-week-calendar-all-day-list="">
+      <li class="week-calendar__all-day-list-item" data-week-calendar-all-day-list-item="">
+      <ul class="event-list" data-event-list=""></ul>
+    </li></ul>
+
+      <div class="week-calendar__content">
+        <div class="week-calendar__content-inner" data-calendar-scrollable="">
+          <ul class="week-calendar__time-list">
+            <li class="week-calendar__time-item">
+              <time class="week-calendar__time">00:00</time>
+            </li>
+            <li class="week-calendar__time-item">
+              <time class="week-calendar__time">01:00</time>
+            </li>
+            <li class="week-calendar__time-item">
+              <time class="week-calendar__time">02:00</time>
+            </li>
+            <li class="week-calendar__time-item">
+              <time class="week-calendar__time">03:00</time>
+            </li>
+            <li class="week-calendar__time-item">
+              <time class="week-calendar__time">04:00</time>
+            </li>
+            <li class="week-calendar__time-item">
+              <time class="week-calendar__time">05:00</time>
+            </li>
+            <li class="week-calendar__time-item">
+              <time class="week-calendar__time">06:00</time>
+            </li>
+            <li class="week-calendar__time-item">
+              <time class="week-calendar__time">07:00</time>
+            </li>
+            <li class="week-calendar__time-item">
+              <time class="week-calendar__time">08:00</time>
+            </li>
+            <li class="week-calendar__time-item">
+              <time class="week-calendar__time">09:00</time>
+            </li>
+            <li class="week-calendar__time-item">
+              <time class="week-calendar__time">10:00</time>
+            </li>
+            <li class="week-calendar__time-item">
+              <time class="week-calendar__time">11:00</time>
+            </li>
+            <li class="week-calendar__time-item">
+              <time class="week-calendar__time">12:00</time>
+            </li>
+            <li class="week-calendar__time-item">
+              <time class="week-calendar__time">13:00</time>
+            </li>
+            <li class="week-calendar__time-item">
+              <time class="week-calendar__time">14:00</time>
+            </li>
+            <li class="week-calendar__time-item">
+              <time class="week-calendar__time">15:00</time>
+            </li>
+            <li class="week-calendar__time-item">
+              <time class="week-calendar__time">16:00</time>
+            </li>
+            <li class="week-calendar__time-item">
+              <time class="week-calendar__time">17:00</time>
+            </li>
+            <li class="week-calendar__time-item">
+              <time class="week-calendar__time">18:00</time>
+            </li>
+            <li class="week-calendar__time-item">
+              <time class="week-calendar__time">19:00</time>
+            </li>
+            <li class="week-calendar__time-item">
+              <time class="week-calendar__time">20:00</time>
+            </li>
+            <li class="week-calendar__time-item">
+              <time class="week-calendar__time">21:00</time>
+            </li>
+            <li class="week-calendar__time-item">
+              <time class="week-calendar__time">22:00</time>
+            </li>
+            <li class="week-calendar__time-item">
+              <time class="week-calendar__time">23:00</time>
+            </li>
+          </ul>
+
+          <div class="week-calendar__columns" data-week-calendar-columns="">
+          <div class="week-calendar__column" data-week-calendar-column="">
+      <div class="week-calendar__cell" data-week-calendar-cell="0"></div>
+      <div class="week-calendar__cell" data-week-calendar-cell="60"></div>
+      <div class="week-calendar__cell" data-week-calendar-cell="120"></div>
+      <div class="week-calendar__cell" data-week-calendar-cell="180"></div>
+      <div class="week-calendar__cell" data-week-calendar-cell="240"></div>
+      <div class="week-calendar__cell" data-week-calendar-cell="300"></div>
+      <div class="week-calendar__cell" data-week-calendar-cell="360"></div>
+      <div class="week-calendar__cell" data-week-calendar-cell="420"></div>
+      <div class="week-calendar__cell" data-week-calendar-cell="480"></div>
+      <div class="week-calendar__cell" data-week-calendar-cell="540"></div>
+      <div class="week-calendar__cell" data-week-calendar-cell="600"></div>
+      <div class="week-calendar__cell" data-week-calendar-cell="660"></div>
+      <div class="week-calendar__cell" data-week-calendar-cell="720"></div>
+      <div class="week-calendar__cell" data-week-calendar-cell="780"></div>
+      <div class="week-calendar__cell" data-week-calendar-cell="840"></div>
+      <div class="week-calendar__cell" data-week-calendar-cell="900"></div>
+      <div class="week-calendar__cell" data-week-calendar-cell="960"></div>
+      <div class="week-calendar__cell" data-week-calendar-cell="1020"></div>
+      <div class="week-calendar__cell" data-week-calendar-cell="1080"></div>
+      <div class="week-calendar__cell" data-week-calendar-cell="1140"></div>
+      <div class="week-calendar__cell" data-week-calendar-cell="1200"></div>
+      <div class="week-calendar__cell" data-week-calendar-cell="1260"></div>
+      <div class="week-calendar__cell" data-week-calendar-cell="1320"></div>
+      <div class="week-calendar__cell" data-week-calendar-cell="1380"></div>
+    </div></div>
+        </div>
+      </div>
+    </div></div>
+    </main>
+  </div>
+
+  <button class="fab mobile-only" data-event-create-button="">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fab__icon">
+      <path d="M5 12h14"></path>
+      <path d="M12 5v14"></path>
+    </svg>
+  </button>
+
+  <dialog class="dialog" data-dialog="event-form">
+    <form class="form" data-event-form="">
+      <div class="dialog__wrapper">
+        <div class="dialog__header">
+          <h2 class="dialog__title" data-dialog-title="">Create event</h2>
+          <button class="button button--icon button--secondary" type="button" data-dialog-close-button="">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="button__icon">
+              <path d="M18 6 6 18"></path>
+              <path d="m6 6 12 12"></path>
+            </svg>
+          </button>
+        </div>
+
+        <div class="dialog__content">
+          <div class="form__fields">
+            <input type="hidden" id="id" name="id" value="">
+
+            <div class="form__field">
+              <label class="form__label" for="title">Title</label>
+              <input class="input input--fill" id="title" name="title" type="text" placeholder="My awesome event!" required="" autofocus="">
+            </div>
+
+            <div class="form__field">
+              <label class="form__label" for="date">Date</label>
+              <input class="input input--fill" id="date" name="date" type="date" required="">
+            </div>
+
+            <div class="form__split">
+              <div class="form__field">
+                <label class="form__label" for="start-time">Start time</label>
+                <div class="select select--fill">
+                  <select class="select__select" id="start-time" name="start-time">
+                    <option value="0">00:00</option>
+                    <option value="30">00:30</option>
+                    <option value="60">01:00</option>
+                    <option value="90">01:30</option>
+                    <option value="120">02:00</option>
+                    <option value="150">02:30</option>
+                    <option value="180">03:00</option>
+                    <option value="210">03:30</option>
+                    <option value="240">04:00</option>
+                    <option value="270">04:30</option>
+                    <option value="300">05:00</option>
+                    <option value="330">05:30</option>
+                    <option value="360">06:00</option>
+                    <option value="390">06:30</option>
+                    <option value="420">07:00</option>
+                    <option value="450">07:30</option>
+                    <option value="480">08:00</option>
+                    <option value="510">08:30</option>
+                    <option value="540">09:00</option>
+                    <option value="570">09:30</option>
+                    <option value="600">10:00</option>
+                    <option value="630">10:30</option>
+                    <option value="660">11:00</option>
+                    <option value="690">11:30</option>
+                    <option value="720">12:00</option>
+                    <option value="750">12:30</option>
+                    <option value="780">01:00</option>
+                    <option value="810">01:30</option>
+                    <option value="840">02:00</option>
+                    <option value="870">02:30</option>
+                    <option value="900">03:00</option>
+                    <option value="930">03:30</option>
+                    <option value="960">04:00</option>
+                    <option value="990">04:30</option>
+                    <option value="1020">05:00</option>
+                    <option value="1050">05:30</option>
+                    <option value="1080">06:00</option>
+                    <option value="1110">06:30</option>
+                    <option value="1140">07:00</option>
+                    <option value="1170">07:30</option>
+                    <option value="1200">08:00</option>
+                    <option value="1230">08:30</option>
+                    <option value="1260">09:00</option>
+                    <option value="1290">09:30</option>
+                    <option value="1320">10:00</option>
+                    <option value="1350">10:30</option>
+                    <option value="1380">11:00</option>
+                    <option value="1410">11:30</option>
+                  </select>
+
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="select__icon">
+                    <path d="m6 9 6 6 6-6"></path>
+                  </svg>
+                </div>
+              </div>
+
+              <div class="form__field">
+                <label class="form__label" for="end-time">End time</label>
+                <div class="select select--fill">
+                  <select class="select__select" id="end-time" name="end-time">
+                    <option value="30">00:30</option>
+                    <option value="60">01:00</option>
+                    <option value="90">01:30</option>
+                    <option value="120">02:00</option>
+                    <option value="150">02:30</option>
+                    <option value="180">03:00</option>
+                    <option value="210">03:30</option>
+                    <option value="240">04:00</option>
+                    <option value="270">04:30</option>
+                    <option value="300">05:00</option>
+                    <option value="330">05:30</option>
+                    <option value="360">06:00</option>
+                    <option value="390">06:30</option>
+                    <option value="420">07:00</option>
+                    <option value="450">07:30</option>
+                    <option value="480">08:00</option>
+                    <option value="510">08:30</option>
+                    <option value="540">09:00</option>
+                    <option value="570">09:30</option>
+                    <option value="600">10:00</option>
+                    <option value="630">10:30</option>
+                    <option value="660">11:00</option>
+                    <option value="690">11:30</option>
+                    <option value="720">12:00</option>
+                    <option value="750">12:30</option>
+                    <option value="780">13:00</option>
+                    <option value="810">13:30</option>
+                    <option value="840">14:00</option>
+                    <option value="870">14:30</option>
+                    <option value="900">15:00</option>
+                    <option value="930">15:30</option>
+                    <option value="960">16:00</option>
+                    <option value="990">16:30</option>
+                    <option value="1020">17:00</option>
+                    <option value="1050">17:30</option>
+                    <option value="1080">18:00</option>
+                    <option value="1110">18:30</option>
+                    <option value="1140">19:00</option>
+                    <option value="1170">19:30</option>
+                    <option value="1200">20:00</option>
+                    <option value="1230">20:30</option>
+                    <option value="1260">21:00</option>
+                    <option value="1290">21:30</option>
+                    <option value="1320">22:00</option>
+                    <option value="1350">22:30</option>
+                    <option value="1380">23:00</option>
+                    <option value="1410">23:30</option>
+                    <option value="1440">00:00</option>
+                  </select>
+
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="select__icon">
+                    <path d="m6 9 6 6 6-6"></path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <div class="form__field">
+              <label class="form__label" for="color">Colors</label>
+              <div class="color-select">
+                <label class="color-select__item" style="--color-select-item-color: #AAFF00">
+                  <input class="color-select__input" type="radio" name="color" value="#AAFF00">
+                  <div class="color-select__color">
+                    <div class="color-select__color-inner"></div>
+                  </div>
+                </label>
+                <label class="color-select__item" style="--color-select-item-color: #77FF00">
+                  <input class="color-select__input" type="radio" name="color" value="#77FF00" checked="">
+                  <div class="color-select__color">
+                    <div class="color-select__color-inner"></div>
+                  </div>
+                </label>
+                <label class="color-select__item" style="--color-select-item-color: #00FF80">
+                  <input class="color-select__input" type="radio" name="color" value="#00FF80">
+                  <div class="color-select__color">
+                    <div class="color-select__color-inner"></div>
+                  </div>
+                </label>
+                <label class="color-select__item" style="--color-select-item-color: #00FFBF">
+                  <input class="color-select__input" type="radio" name="color" value="#00FFBF">
+                  <div class="color-select__color">
+                    <div class="color-select__color-inner"></div>
+                  </div>
+                </label>
+                <label class="color-select__item" style="--color-select-item-color: #00EAFF">
+                  <input class="color-select__input" type="radio" name="color" value="#00EAFF">
+                  <div class="color-select__color">
+                    <div class="color-select__color-inner"></div>
+                  </div>
+                </label>
+                <label class="color-select__item" style="--color-select-item-color: #00AEFF">
+                  <input class="color-select__input" type="radio" name="color" value="#00AEFF">
+                  <div class="color-select__color">
+                    <div class="color-select__color-inner"></div>
+                  </div>
+                </label>
+                <label class="color-select__item" style="--color-select-item-color: #0055FF">
+                  <input class="color-select__input" type="radio" name="color" value="#0055FF">
+                  <div class="color-select__color">
+                    <div class="color-select__color-inner"></div>
+                  </div>
+                </label>
+                <label class="color-select__item" style="--color-select-item-color: #3300FF">
+                  <input class="color-select__input" type="radio" name="color" value="#3300FF">
+                  <div class="color-select__color">
+                    <div class="color-select__color-inner"></div>
+                  </div>
+                </label>
+                <label class="color-select__item" style="--color-select-item-color: #8000FF">
+                  <input class="color-select__input" type="radio" name="color" value="#8000FF">
+                  <div class="color-select__color">
+                    <div class="color-select__color-inner"></div>
+                  </div>
+                </label>
+                <label class="color-select__item" style="--color-select-item-color: #E100FF">
+                  <input class="color-select__input" type="radio" name="color" value="#E100FF">
+                  <div class="color-select__color">
+                    <div class="color-select__color-inner"></div>
+                  </div>
+                </label>
+                <label class="color-select__item" style="--color-select-item-color: #CCFF00">
+                  <input class="color-select__input" type="radio" name="color" value="#CCFF00">
+                  <div class="color-select__color">
+                    <div class="color-select__color-inner"></div>
+                  </div>
+                </label>
+                <label class="color-select__item" style="--color-select-item-color: #EEFF00">
+                  <input class="color-select__input" type="radio" name="color" value="#EEFF00">
+                  <div class="color-select__color">
+                    <div class="color-select__color-inner"></div>
+                  </div>
+                </label>
+                <label class="color-select__item" style="--color-select-item-color: #FFD900">
+                  <input class="color-select__input" type="radio" name="color" value="#FFD900">
+                  <div class="color-select__color">
+                    <div class="color-select__color-inner"></div>
+                  </div>
+                </label>
+                <label class="color-select__item" style="--color-select-item-color: #FFBB00">
+                  <input class="color-select__input" type="radio" name="color" value="#FFBB00">
+                  <div class="color-select__color">
+                    <div class="color-select__color-inner"></div>
+                  </div>
+                </label>
+                <label class="color-select__item" style="--color-select-item-color: #FF7700">
+                  <input class="color-select__input" type="radio" name="color" value="#FF7700">
+                  <div class="color-select__color">
+                    <div class="color-select__color-inner"></div>
+                  </div>
+                </label>
+                <label class="color-select__item" style="--color-select-item-color: #FF3700">
+                  <input class="color-select__input" type="radio" name="color" value="#FF3700">
+                  <div class="color-select__color">
+                    <div class="color-select__color-inner"></div>
+                  </div>
+                </label>
+                <label class="color-select__item" style="--color-select-item-color: #FF0022">
+                  <input class="color-select__input" type="radio" name="color" value="#FF0022">
+                  <div class="color-select__color">
+                    <div class="color-select__color-inner"></div>
+                  </div>
+                </label>
+                <label class="color-select__item" style="--color-select-item-color: #FF004C">
+                  <input class="color-select__input" type="radio" name="color" value="#FF004C">
+                  <div class="color-select__color">
+                    <div class="color-select__color-inner"></div>
+                  </div>
+                </label>
+                <label class="color-select__item" style="--color-select-item-color: #FF0099">
+                  <input class="color-select__input" type="radio" name="color" value="#FF0099">
+                  <div class="color-select__color">
+                    <div class="color-select__color-inner"></div>
+                  </div>
+                </label>
+                <label class="color-select__item" style="--color-select-item-color: #FF00D0">
+                  <input class="color-select__input" type="radio" name="color" value="#FF00D0">
+                  <div class="color-select__color">
+                    <div class="color-select__color-inner"></div>
+                  </div>
+                </label>
+                <label class="color-select__item" style="--color-select-item-color: #EAFF96">
+                  <input class="color-select__input" type="radio" name="color" value="#EAFF96">
+                  <div class="color-select__color">
+                    <div class="color-select__color-inner"></div>
+                  </div>
+                </label>
+                <label class="color-select__item" style="--color-select-item-color: #CCFF96">
+                  <input class="color-select__input" type="radio" name="color" value="#CCFF96">
+                  <div class="color-select__color">
+                    <div class="color-select__color-inner"></div>
+                  </div>
+                </label>
+                <label class="color-select__item" style="--color-select-item-color: #ADFF96">
+                  <input class="color-select__input" type="radio" name="color" value="#ADFF96">
+                  <div class="color-select__color">
+                    <div class="color-select__color-inner"></div>
+                  </div>
+                </label>
+                <label class="color-select__item" style="--color-select-item-color: #96FFCC">
+                  <input class="color-select__input" type="radio" name="color" value="#96FFCC">
+                  <div class="color-select__color">
+                    <div class="color-select__color-inner"></div>
+                  </div>
+                </label>
+                <label class="color-select__item" style="--color-select-item-color: #96FFF5">
+                  <input class="color-select__input" type="radio" name="color" value="#96FFF5">
+                  <div class="color-select__color">
+                    <div class="color-select__color-inner"></div>
+                  </div>
+                </label>
+                <label class="color-select__item" style="--color-select-item-color: #96E0FF">
+                  <input class="color-select__input" type="radio" name="color" value="#96E0FF">
+                  <div class="color-select__color">
+                    <div class="color-select__color-inner"></div>
+                  </div>
+                </label>
+                <label class="color-select__item" style="--color-select-item-color: #96BEFF">
+                  <input class="color-select__input" type="radio" name="color" value="#96BEFF">
+                  <div class="color-select__color">
+                    <div class="color-select__color-inner"></div>
+                  </div>
+                </label>
+                <label class="color-select__item" style="--color-select-item-color: #96A4FF">
+                  <input class="color-select__input" type="radio" name="color" value="#96A4FF">
+                  <div class="color-select__color">
+                    <div class="color-select__color-inner"></div>
+                  </div>
+                </label>
+                <label class="color-select__item" style="--color-select-item-color: #9A96FF">
+                  <input class="color-select__input" type="radio" name="color" value="#9A96FF">
+                  <div class="color-select__color">
+                    <div class="color-select__color-inner"></div>
+                  </div>
+                </label>
+                <label class="color-select__item" style="--color-select-item-color: #B996FF">
+                  <input class="color-select__input" type="radio" name="color" value="#B996FF">
+                  <div class="color-select__color">
+                    <div class="color-select__color-inner"></div>
+                  </div>
+                </label>
+                <label class="color-select__item" style="--color-select-item-color: #FFF196">
+                  <input class="color-select__input" type="radio" name="color" value="#FFF196">
+                  <div class="color-select__color">
+                    <div class="color-select__color-inner"></div>
+                  </div>
+                </label>
+                <label class="color-select__item" style="--color-select-item-color: #FFD296">
+                  <input class="color-select__input" type="radio" name="color" value="#FFD296">
+                  <div class="color-select__color">
+                    <div class="color-select__color-inner"></div>
+                  </div>
+                </label>
+                <label class="color-select__item" style="--color-select-item-color: #FFBB96">
+                  <input class="color-select__input" type="radio" name="color" value="#FFBB96">
+                  <div class="color-select__color">
+                    <div class="color-select__color-inner"></div>
+                  </div>
+                </label>
+                <label class="color-select__item" style="--color-select-item-color: #FFA996">
+                  <input class="color-select__input" type="radio" name="color" value="#FFA996">
+                  <div class="color-select__color">
+                    <div class="color-select__color-inner"></div>
+                  </div>
+                </label>
+                <label class="color-select__item" style="--color-select-item-color: #FF9696">
+                  <input class="color-select__input" type="radio" name="color" value="#FF9696">
+                  <div class="color-select__color">
+                    <div class="color-select__color-inner"></div>
+                  </div>
+                </label>
+                <label class="color-select__item" style="--color-select-item-color: #FF96B0">
+                  <input class="color-select__input" type="radio" name="color" value="#FF96B0">
+                  <div class="color-select__color">
+                    <div class="color-select__color-inner"></div>
+                  </div>
+                </label>
+                <label class="color-select__item" style="--color-select-item-color: #FF96E8">
+                  <input class="color-select__input" type="radio" name="color" value="#FF96E8">
+                  <div class="color-select__color">
+                    <div class="color-select__color-inner"></div>
+                  </div>
+                </label>
+                <label class="color-select__item" style="--color-select-item-color: #ED96FF">
+                  <input class="color-select__input" type="radio" name="color" value="#ED96FF">
+                  <div class="color-select__color">
+                    <div class="color-select__color-inner"></div>
+                  </div>
+                </label>
+                <label class="color-select__item" style="--color-select-item-color: #D996FF">
+                  <input class="color-select__input" type="radio" name="color" value="#D996FF">
+                  <div class="color-select__color">
+                    <div class="color-select__color-inner"></div>
+                  </div>
+                </label>
+                <label class="color-select__item" style="--color-select-item-color: #CB96FF">
+                  <input class="color-select__input" type="radio" name="color" value="#CB96FF">
+                  <div class="color-select__color">
+                    <div class="color-select__color-inner"></div>
+                  </div>
+                </label>  
+            </div>    
+        </div>
+
+        <div class="dialog__footer">
+          <div class="dialog__actions">
+            <button class="button button--secondary" type="button" data-dialog-close-button="">Cancel</button>
+            <button class="button button--primary">Save</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  <div class="toaster"></div></dialog>
+
+  <dialog class="dialog" data-dialog="event-details">
+    <div class="dialog__wrapper">
+      <div class="dialog__header">
+        <h2 class="dialog__title">Event details</h2>
+        <div class="dialog__header-actions">
+          <button class="button button--icon button--secondary" data-event-details-delete-button="">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="button__icon">
+              <path d="M3 6h18"></path>
+              <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+              <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+            </svg>
+          </button>
+
+          <button class="button button--icon button--secondary" data-event-details-edit-button="">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="button__icon">
+              <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"></path>
+              <path d="m15 5 4 4"></path>
+            </svg>
+          </button>
+
+          <div class="dialog__header-actions-divider"></div>
+
+          <button class="button button--icon button--secondary" data-dialog-close-button="" autofocus="">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="button__icon">
+              <path d="M18 6 6 18"></path>
+              <path d="m6 6 12 12"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="dialog__content">
+        <div class="event-details" data-event-details="">
+          <div class="event-details__line"></div>
+          <div class="event-details__content">
+            <div class="event-details__title" data-event-details-title=""></div>
+            <div class="event-details__time">
+              <time data-event-details-date=""></time> <br>
+              <time data-event-details-start-time=""></time> - <time data-event-details-end-time=""></time>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog class="dialog" data-dialog="event-delete">
+    <div class="dialog__wrapper">
+      <div class="dialog__header">
+        <h2 class="dialog__title">Delete event</h2>
+
+        <button class="button button--icon button--secondary" data-dialog-close-button="" autofocus="">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="button__icon">
+            <path d="M18 6 6 18"></path>
+            <path d="m6 6 12 12"></path>
+          </svg>
+        </button>
+      </div>
+
+      <div class="dialog__content">
+        <p>Do you really want to delete <strong data-event-delete-title=""></strong>?</p>
+      </div>
+
+      <div class="dialog__footer">
+        <div class="dialog__actions">
+          <button class="button button--secondary" data-dialog-close-button="">Cancel</button>
+          <button class="button button--danger" data-event-delete-button="">Delete</button>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog class="dialog dialog--sidebar" data-dialog="mobile-sidebar">
+    <div class="dialog__wrapper">
+      <div class="dialog__content">
+        <div class="mini-calendar" data-mini-calendar="">
+          <div class="mini-calendar__header">
+            <time class="mini-calendar__date" data-mini-calendar-date="">October 2025</time>
+
+            <div class="mini-calendar__controls">
+              <button class="button button--icon button--secondary button--sm" data-mini-calendar-previous-button="">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="button__icon">
+                  <path d="m15 18-6-6 6-6"></path>
+                </svg>
+              </button>
+
+              <button class="button button--icon button--secondary button--sm" data-mini-calendar-next-button="">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="button__icon">
+                  <path d="m9 18 6-6-6-6"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="mini-calendar__content">
+            <ul class="mini-calendar__day-of-week-list">
+              <li class="mini-calendar__day-of-week">S</li>
+              <li class="mini-calendar__day-of-week">M</li>
+              <li class="mini-calendar__day-of-week">T</li>
+              <li class="mini-calendar__day-of-week">W</li>
+              <li class="mini-calendar__day-of-week">T</li>
+              <li class="mini-calendar__day-of-week">F</li>
+              <li class="mini-calendar__day-of-week">S</li>
+            </ul>
+
+            <ul class="mini-calendar__day-list" data-mini-calendar-day-list=""><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm mini-calendar__day--other button--secondary" data-mini-calendar-day="">28</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm mini-calendar__day--other button--secondary" data-mini-calendar-day="">29</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm mini-calendar__day--other button--secondary" data-mini-calendar-day="">30</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm button--secondary" data-mini-calendar-day="">1</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm button--secondary" data-mini-calendar-day="">2</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm button--secondary" data-mini-calendar-day="">3</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm button--secondary" data-mini-calendar-day="">4</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm button--secondary" data-mini-calendar-day="">5</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm button--secondary" data-mini-calendar-day="">6</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm button--secondary" data-mini-calendar-day="">7</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm button--secondary" data-mini-calendar-day="">8</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm button--secondary" data-mini-calendar-day="">9</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm button--secondary" data-mini-calendar-day="">10</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm button--secondary" data-mini-calendar-day="">11</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm button--secondary" data-mini-calendar-day="">12</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm button--secondary" data-mini-calendar-day="">13</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm button--secondary" data-mini-calendar-day="">14</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm button--secondary" data-mini-calendar-day="">15</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm button--secondary" data-mini-calendar-day="">16</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm button--secondary" data-mini-calendar-day="">17</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm button--secondary" data-mini-calendar-day="">18</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm button--secondary" data-mini-calendar-day="">19</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm button--secondary" data-mini-calendar-day="">20</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm button--primary" data-mini-calendar-day="">21</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm button--secondary" data-mini-calendar-day="">22</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm button--secondary" data-mini-calendar-day="">23</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm button--secondary" data-mini-calendar-day="">24</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm button--secondary" data-mini-calendar-day="">25</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm button--secondary" data-mini-calendar-day="">26</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm button--secondary" data-mini-calendar-day="">27</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm button--secondary" data-mini-calendar-day="">28</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm button--secondary" data-mini-calendar-day="">29</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm button--secondary" data-mini-calendar-day="">30</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm button--secondary" data-mini-calendar-day="">31</button>
+    </li><li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm mini-calendar__day--other button--secondary" data-mini-calendar-day="">1</button>
+    </li></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <template data-template="month-calendar">
+    <div class="month-calendar" data-month-calendar="">
+      <ul class="month-calendar__day-of-week-list">
+        <li class="month-calendar__day-of-week">Mon</li>
+        <li class="month-calendar__day-of-week">Tue</li>
+        <li class="month-calendar__day-of-week">Wed</li>
+        <li class="month-calendar__day-of-week">Thu</li>
+        <li class="month-calendar__day-of-week">Fri</li>
+        <li class="month-calendar__day-of-week">Sat</li>
+        <li class="month-calendar__day-of-week">Sun</li>
+      </ul>
+
+      <div class="month-calendar__day-list-wrapper">
+        <ul class="month-calendar__day-list" data-month-calendar-day-list="" data-calendar-scrollable="">
+        </ul>
+      </div>
+    </div>
+  </template>
+
+  <template data-template="month-calendar-day">
+    <li class="month-calendar__day" data-month-calendar-day="">
+      <button class="month-calendar__day-label" data-month-calendar-day-label=""></button>
+      <div class="month-calendar__event-list-wrapper" data-month-calendar-event-list-wrapper="">
+        <ul class="event-list" data-event-list=""></ul>
+      </div>
+    </li>
+  </template>
+
+  <template data-template="week-calendar">
+    <div class="week-calendar" data-week-calendar="">
+      <ul class="week-calendar__day-of-week-list" data-week-calendar-day-of-week-list="">
+      </ul>
+
+      <ul class="week-calendar__all-day-list" data-week-calendar-all-day-list="">
+      </ul>
+
+      <div class="week-calendar__content">
+        <div class="week-calendar__content-inner" data-calendar-scrollable="">
+          <ul class="week-calendar__time-list">
+            <li class="week-calendar__time-item">
+              <time class="week-calendar__time">00:00</time>
+            </li>
+            <li class="week-calendar__time-item">
+              <time class="week-calendar__time">01:00</time>
+            </li>
+            <li class="week-calendar__time-item">
+              <time class="week-calendar__time">02:00</time>
+            </li>
+            <li class="week-calendar__time-item">
+              <time class="week-calendar__time">03:00</time>
+            </li>
+            <li class="week-calendar__time-item">
+              <time class="week-calendar__time">04:00</time>
+            </li>
+            <li class="week-calendar__time-item">
+              <time class="week-calendar__time">05:00</time>
+            </li>
+            <li class="week-calendar__time-item">
+              <time class="week-calendar__time">06:00</time>
+            </li>
+            <li class="week-calendar__time-item">
+              <time class="week-calendar__time">07:00</time>
+            </li>
+            <li class="week-calendar__time-item">
+              <time class="week-calendar__time">08:00</time>
+            </li>
+            <li class="week-calendar__time-item">
+              <time class="week-calendar__time">09:00</time>
+            </li>
+            <li class="week-calendar__time-item">
+              <time class="week-calendar__time">10:00</time>
+            </li>
+            <li class="week-calendar__time-item">
+              <time class="week-calendar__time">11:00</time>
+            </li>
+            <li class="week-calendar__time-item">
+              <time class="week-calendar__time">12:00</time>
+            </li>
+            <li class="week-calendar__time-item">
+              <time class="week-calendar__time">13:00</time>
+            </li>
+            <li class="week-calendar__time-item">
+              <time class="week-calendar__time">14:00</time>
+            </li>
+            <li class="week-calendar__time-item">
+              <time class="week-calendar__time">15:00</time>
+            </li>
+            <li class="week-calendar__time-item">
+              <time class="week-calendar__time">16:00</time>
+            </li>
+            <li class="week-calendar__time-item">
+              <time class="week-calendar__time">17:00</time>
+            </li>
+            <li class="week-calendar__time-item">
+              <time class="week-calendar__time">18:00</time>
+            </li>
+            <li class="week-calendar__time-item">
+              <time class="week-calendar__time">19:00</time>
+            </li>
+            <li class="week-calendar__time-item">
+              <time class="week-calendar__time">20:00</time>
+            </li>
+            <li class="week-calendar__time-item">
+              <time class="week-calendar__time">21:00</time>
+            </li>
+            <li class="week-calendar__time-item">
+              <time class="week-calendar__time">22:00</time>
+            </li>
+            <li class="week-calendar__time-item">
+              <time class="week-calendar__time">23:00</time>
+            </li>
+          </ul>
+
+          <div class="week-calendar__columns" data-week-calendar-columns="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <template data-template="week-calendar-day-of-week">
+    <li class="week-calendar__day-of-week" data-week-calendar-day-of-week="">
+      <button class="week-calendar__day-of-week-button" data-week-calendar-day-of-week-button="">
+        <span class="week-calendar__day-of-week-day" data-week-calendar-day-of-week-day=""></span>
+        <span class="week-calendar__day-of-week-number" data-week-calendar-day-of-week-number=""></span>
+      </button>
+    </li>
+  </template>
+
+  <template data-template="week-calendar-all-day-list-item">
+    <li class="week-calendar__all-day-list-item" data-week-calendar-all-day-list-item="">
+      <ul class="event-list" data-event-list=""></ul>
+    </li>
+  </template>
+
+  <template data-template="week-calendar-column">
+    <div class="week-calendar__column" data-week-calendar-column="">
+      <div class="week-calendar__cell" data-week-calendar-cell="0"></div>
+      <div class="week-calendar__cell" data-week-calendar-cell="60"></div>
+      <div class="week-calendar__cell" data-week-calendar-cell="120"></div>
+      <div class="week-calendar__cell" data-week-calendar-cell="180"></div>
+      <div class="week-calendar__cell" data-week-calendar-cell="240"></div>
+      <div class="week-calendar__cell" data-week-calendar-cell="300"></div>
+      <div class="week-calendar__cell" data-week-calendar-cell="360"></div>
+      <div class="week-calendar__cell" data-week-calendar-cell="420"></div>
+      <div class="week-calendar__cell" data-week-calendar-cell="480"></div>
+      <div class="week-calendar__cell" data-week-calendar-cell="540"></div>
+      <div class="week-calendar__cell" data-week-calendar-cell="600"></div>
+      <div class="week-calendar__cell" data-week-calendar-cell="660"></div>
+      <div class="week-calendar__cell" data-week-calendar-cell="720"></div>
+      <div class="week-calendar__cell" data-week-calendar-cell="780"></div>
+      <div class="week-calendar__cell" data-week-calendar-cell="840"></div>
+      <div class="week-calendar__cell" data-week-calendar-cell="900"></div>
+      <div class="week-calendar__cell" data-week-calendar-cell="960"></div>
+      <div class="week-calendar__cell" data-week-calendar-cell="1020"></div>
+      <div class="week-calendar__cell" data-week-calendar-cell="1080"></div>
+      <div class="week-calendar__cell" data-week-calendar-cell="1140"></div>
+      <div class="week-calendar__cell" data-week-calendar-cell="1200"></div>
+      <div class="week-calendar__cell" data-week-calendar-cell="1260"></div>
+      <div class="week-calendar__cell" data-week-calendar-cell="1320"></div>
+      <div class="week-calendar__cell" data-week-calendar-cell="1380"></div>
+    </div>
+  </template>
+
+  <template data-template="event-list-item">
+    <li class="event-list__item" data-event-list-item="">
+    </li>
+  </template>
+
+  <template data-template="event">
+    <button class="event" data-event="">
+      <span class="event__color"></span>
+      <span class="event__title" data-event-title=""></span>
+      <span class="event__time">
+        <time data-event-start-time=""></time> - <time data-event-end-time=""></time>
+      </span>
+    </button>
+  </template>
+
+  <template data-template="mini-calendar-day-list-item">
+    <li class="mini-calendar__day-list-item" data-mini-calendar-day-list-item="">
+      <button class="mini-calendar__day button button--sm" data-mini-calendar-day=""></button>
+    </li>
+  </template>
+
+
+<div class="toaster"></div></body>
+
+</html>
