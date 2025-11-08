@@ -1,6 +1,6 @@
 const eventTemplateElement = document.querySelector("[data-template='event']");
 
-const dateFormatter = new Intl.DateTimeFormat("en-GB", {
+const dateFormatter = new Intl.DateTimeFormat("sl-SI", {
   hour: "numeric",
   minute: "numeric"
 });
@@ -38,8 +38,9 @@ function initEvent(event) {
   const eventStartTimeElement = eventElement.querySelector("[data-event-start-time]");
   const eventEndTimeElement = eventElement.querySelector("[data-event-end-time]");
 
-  const startDate = eventTimeToDate(event, event.startTime);
-  const endDate = eventTimeToDate(event, event.endTime);
+  const useEndDateForEnd = event.endDate && (event.endDate.toDateString() !== event.date.toDateString());
+  const startDate = eventTimeToDate(event, event.startTime, false);
+  const endDate = eventTimeToDate(event, event.endTime, useEndDateForEnd);
 
   eventElement.style.setProperty("--event-color", event.color);
   eventTitleElement.textContent = event.title;
@@ -50,6 +51,7 @@ function initEvent(event) {
     eventElement.dispatchEvent(new CustomEvent("event-click", {
       detail: {
         event,
+        clickedDate: event.clickedDate || event.date // Pass along the specific date clicked
       },
       bubbles: true
     }));
@@ -77,18 +79,29 @@ export function eventCollidesWith(eventA, eventB) {
   return minEndTime > maxStartTime;
 }
 
-export function eventTimeToDate(event, eventTime) {
+export function eventTimeToDate(event, eventTime, useEndDate = false) {
+  const baseDate = useEndDate && event.endDate ? event.endDate : event.date;
   return new Date(
-    event.date.getFullYear(),
-    event.date.getMonth(),
-    event.date.getDate(),
+    baseDate.getFullYear(),
+    baseDate.getMonth(),
+    baseDate.getDate(),
     0,
     eventTime
   );
 }
 
 export function validateEvent(event) {
-  if (event.startTime >= event.endTime) {
+  // Ensure end date is not before start date
+  if (event.endDate < event.date) {
+    return "Event end date must be the same or after the start date";
+  }
+
+  // If event is on the same day, ensure end time is after start time
+  const sameDay = event.date.getFullYear() === event.endDate.getFullYear() &&
+    event.date.getMonth() === event.endDate.getMonth() &&
+    event.date.getDate() === event.endDate.getDate();
+
+  if (sameDay && event.startTime >= event.endTime) {
     return "Event end time must be after start time";
   }
 
@@ -108,7 +121,7 @@ export function generateEventId() {
   return Date.now();
 }
 
-const createTimeFormatter = (locale = 'en-GB') => {
+const createTimeFormatter = (locale = 'sl-SI') => {
   return new Intl.DateTimeFormat(locale, {
     hour: "numeric",
     minute: "numeric"

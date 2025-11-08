@@ -13,6 +13,7 @@ import { initViewSelect } from "./view-select.js";
 import { initResponsive } from "./responsive.js";
 import { initUrl } from "./url.js";
 import { initSync } from "./sync.js";
+import { initYearMonthSelect } from "./year-month-select.js";
 
 const eventStore = initEventStore();
 initCalendar(eventStore);
@@ -28,4 +29,5 @@ initNotifications();
 initViewSelect();
 initUrl();
 initResponsive();
+initYearMonthSelect();
 initSync();

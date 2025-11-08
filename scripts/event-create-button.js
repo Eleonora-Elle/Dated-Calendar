@@ -12,11 +12,18 @@ function initEventCreateButton(buttonElement) {
   let selectedDate = getUrlDate();
 
   buttonElement.addEventListener("click", () => {
+    const now = new Date();
+    const currentMinutes = now.getHours() * 60 + now.getMinutes();
+    // Start time: current time + 1 hour, rounded to nearest 30 min
+    const startTime = Math.ceil((currentMinutes + 60) / 30) * 30;
+    // End time: start time + 30 minutes
+    const endTime = startTime + 30;
+    
     buttonElement.dispatchEvent(new CustomEvent("event-create-request", {
       detail: {
         date: selectedDate,
-        startTime: 600,
-        endTime: 960
+        startTime: startTime,
+        endTime: endTime
       },
       bubbles: true
     }));

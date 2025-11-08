@@ -7,7 +7,7 @@ const calendarDayOfWeekTemplateElement = document.querySelector("[data-template=
 const calendarAllDayListItemTemplateElement = document.querySelector("[data-template='week-calendar-all-day-list-item']");
 const calendarColumnTemplateElement = document.querySelector("[data-template='week-calendar-column']");
 
-const dateFormatter = new Intl.DateTimeFormat("en-GB", {
+const dateFormatter = new Intl.DateTimeFormat("sl-SI", {
   weekday: 'short'
 });
 
@@ -19,17 +19,84 @@ export function initWeekCalendar(parent, selectedDate, eventStore, isSingleDay, 
   const calendarColumnsElement = calendarElement.querySelector("[data-week-calendar-columns]");
 
   const weekDays = isSingleDay ? [selectedDate] : generateWeekDays(selectedDate);
+  
+  // Collect all unique events for the week (only if in week view)
+  let multiDaySpanningEvents = [];
+  if (!isSingleDay && weekDays.length > 0) {
+    try {
+      const allEventsMap = new Map();
+      for (const weekDay of weekDays) {
+        const events = eventStore.getEventsByDate(weekDay);
+        if (events && Array.isArray(events)) {
+          events.forEach(ev => {
+            if (ev && ev.id && !allEventsMap.has(ev.id)) {
+              allEventsMap.set(ev.id, ev);
+            }
+          });
+        }
+      }
+      const uniqueWeekEvents = Array.from(allEventsMap.values());
+      
+      // Separate multi-day all-day spanning events from other events
+      // Only all-day events that span multiple days should be rendered as spanning bars
+      multiDaySpanningEvents = uniqueWeekEvents.filter(ev => {
+        if (!ev || !ev.date) return false;
+        try {
+          const evStart = new Date(ev.date.getFullYear(), ev.date.getMonth(), ev.date.getDate());
+          const evEnd = new Date((ev.endDate || ev.date).getFullYear(), (ev.endDate || ev.date).getMonth(), (ev.endDate || ev.date).getDate());
+          return evEnd > evStart && isEventAllDay(ev);
+        } catch (e) {
+          console.error('Error filtering multi-day event:', e, ev);
+          return false;
+        }
+      });
+    } catch (e) {
+      console.error('Error collecting multi-day events:', e);
+      multiDaySpanningEvents = [];
+    }
+  }
+
   for (const weekDay of weekDays) {
     const events = eventStore.getEventsByDate(weekDay);
-    const allDayEvents = events.filter((event) => isEventAllDay(event));
-    const nonAllDayEvents = events.filter((event) => !isEventAllDay(event));
+    // normalize events for the specific weekDay so multi-day events render correctly:
+    // - events that span multiple days should appear as full-day on intermediate days
+    // - on the start day, they run from startTime to end of day; on the end day, from start of day to endTime
+    const normalizedEvents = events.map((ev) => {
+      const evStart = new Date(ev.date.getFullYear(), ev.date.getMonth(), ev.date.getDate());
+      const evEnd = new Date((ev.endDate || ev.date).getFullYear(), (ev.endDate || ev.date).getMonth(), (ev.endDate || ev.date).getDate());
+      const current = new Date(weekDay.getFullYear(), weekDay.getMonth(), weekDay.getDate());
+
+      // middle days
+      if (evStart < current && evEnd > current) {
+        return { ...ev, startTime: 0, endTime: 1440 };
+      }
+
+      // start day of a multi-day event
+      if (evStart.getTime() === current.getTime() && evEnd > current) {
+        return { ...ev, endTime: 1440 };
+      }
+
+      // end day of a multi-day event
+      if (evStart < current && evEnd.getTime() === current.getTime()) {
+        return { ...ev, startTime: 0 };
+      }
+
+      // same-day event
+      return ev;
+    });
+
+    // Filter out multi-day events from allDayEvents since they'll be rendered as spanning bars
+    const allDayEvents = normalizedEvents.filter((event) => 
+      isEventAllDay(event) && !multiDaySpanningEvents.some(mde => mde.id === event.id)
+    );
+    const nonAllDayEvents = normalizedEvents.filter((event) => !isEventAllDay(event));
 
     sortEventsByTime(nonAllDayEvents);
 
     initDayOfWeek(calendarDayOfWeekListElement, selectedDate, weekDay, deviceType);
 
     if (deviceType === "desktop" || (deviceType === "mobile" && isTheSameDay(weekDay, selectedDate))) {
-      initAllDayListItem(calendarAllDayListElement, allDayEvents);
+      initAllDayListItem(calendarAllDayListElement, allDayEvents, weekDay);
       initColumn(calendarColumnsElement, weekDay, nonAllDayEvents);
     }
   }
@@ -39,6 +106,22 @@ export function initWeekCalendar(parent, selectedDate, eventStore, isSingleDay, 
   }
 
   parent.appendChild(calendarElement);
+  
+  // Render multi-day spanning events as continuous bars (after appending to DOM)
+  if (!isSingleDay && multiDaySpanningEvents.length > 0) {
+    try {
+      initMultiDaySpanningEvents(calendarAllDayListElement, multiDaySpanningEvents, weekDays);
+    } catch (e) {
+      console.error('Error rendering multi-day spanning events:', e);
+    }
+  }
+
+  // Highlight current hour if today is visible
+  const todayDate = today();
+  const isTodayVisible = weekDays.some(day => isTheSameDay(day, todayDate));
+  if (isTodayVisible) {
+    initCurrentTimeIndicator(calendarColumnsElement, weekDays, todayDate);
+  }
 
   const dynamicEventElements = calendarElement.querySelectorAll("[data-event-dynamic]");
 
@@ -86,11 +169,11 @@ function initDayOfWeek(parent, selectedDate, weekDay, deviceType) {
   parent.appendChild(calendarDayOfWeekElement);
 }
 
-function initAllDayListItem(parent, events) {
+function initAllDayListItem(parent, events, weekDay) {
   const calendarAllDayListItemContent = calendarAllDayListItemTemplateElement.content.cloneNode(true);
   const calendarAllDayListItemElement = calendarAllDayListItemContent.querySelector("[data-week-calendar-all-day-list-item]");
 
-  initEventList(calendarAllDayListItemElement, events);
+  initEventList(calendarAllDayListItemElement, events, weekDay);
 
   parent.appendChild(calendarAllDayListItemElement);
 }
@@ -296,4 +379,95 @@ function sortEventsByTime(events) {
 
     return eventEndsBefore(eventA, eventB) ? 1 : -1;
   });
+}
+
+function initMultiDaySpanningEvents(allDayListElement, multiDayEvents, weekDays) {
+  if (!multiDayEvents || multiDayEvents.length === 0 || !allDayListElement || !weekDays) return;
+
+  // Create a map of date to column index
+  const dateToColumnIndex = new Map();
+  weekDays.forEach((day, index) => {
+    if (day) {
+      const dateKey = `${day.getFullYear()}-${day.getMonth()}-${day.getDate()}`;
+      dateToColumnIndex.set(dateKey, index);
+    }
+  });
+
+  // Get the first and last day of the week for clipping
+  const weekStart = weekDays[0];
+  const weekEnd = weekDays[weekDays.length - 1];
+  
+  if (!weekStart || !weekEnd) return;
+
+  for (const event of multiDayEvents) {
+    if (!event || !event.date) continue;
+    
+    try {
+      const eventStart = new Date(event.date.getFullYear(), event.date.getMonth(), event.date.getDate());
+      const eventEnd = new Date((event.endDate || event.date).getFullYear(), (event.endDate || event.date).getMonth(), (event.endDate || event.date).getDate());
+
+      // Clip event to visible week range
+      const visibleStart = eventStart < weekStart ? weekStart : eventStart;
+      const visibleEnd = eventEnd > weekEnd ? weekEnd : eventEnd;
+
+      const startKey = `${visibleStart.getFullYear()}-${visibleStart.getMonth()}-${visibleStart.getDate()}`;
+      const endKey = `${visibleEnd.getFullYear()}-${visibleEnd.getMonth()}-${visibleEnd.getDate()}`;
+
+      const startColumnIndex = dateToColumnIndex.get(startKey);
+      const endColumnIndex = dateToColumnIndex.get(endKey);
+
+      if (startColumnIndex === undefined || endColumnIndex === undefined) {
+        continue; // Event doesn't overlap with this week
+      }
+
+      // Create the spanning bar element
+      const spanningBar = document.createElement("div");
+      spanningBar.classList.add("week-calendar__all-day-item", "week-calendar__spanning-event");
+      spanningBar.style.setProperty("--event-color", event.color || "#3b82f6");
+      
+      // Calculate positioning
+      const totalColumns = weekDays.length;
+      const leftPercent = (startColumnIndex / totalColumns) * 100;
+      const rightPercent = ((totalColumns - endColumnIndex - 1) / totalColumns) * 100;
+      
+      // Use CSS custom properties for responsive positioning
+      spanningBar.style.setProperty("--span-left", `${leftPercent}%`);
+      spanningBar.style.setProperty("--span-right", `${rightPercent}%`);
+      
+      // Fallback for mobile (no padding-left)
+      spanningBar.style.left = `${leftPercent}%`;
+      spanningBar.style.right = `${rightPercent}%`;
+
+      // Create event element - use dummy styles since we're positioning the container
+      const dummyStyles = { top: '0', left: '0', bottom: 'auto', right: '0' };
+      initDynamicEvent(spanningBar, event, dummyStyles);
+
+      allDayListElement.appendChild(spanningBar);
+    } catch (e) {
+      console.error('Error rendering spanning event:', e, event);
+    }
+  }
+}
+
+function initCurrentTimeIndicator(columnsElement, weekDays, todayDate) {
+  // Find today's column index
+  const todayColumnIndex = weekDays.findIndex(day => isTheSameDay(day, todayDate));
+  if (todayColumnIndex === -1) return;
+
+  const now = new Date();
+  const currentMinutes = now.getHours() * 60 + now.getMinutes();
+  const topPercentage = (currentMinutes / 1440) * 100;
+
+  // Get today's column element
+  const columns = columnsElement.querySelectorAll('[data-week-calendar-column]');
+  if (!columns[todayColumnIndex]) return;
+
+  const todayColumn = columns[todayColumnIndex];
+
+  // Create current time indicator line
+  const indicator = document.createElement('div');
+  indicator.classList.add('week-calendar__current-time-indicator');
+  indicator.style.top = `${topPercentage}%`;
+
+  todayColumn.appendChild(indicator);
 }
