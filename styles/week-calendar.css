@@ -46,11 +46,11 @@
   line-height: var(--line-height-md);
   color: var(--color-text-dark);
   padding: 0.25rem 0.5rem;
-  border: 1px solid transparent;
+  border: none;
 }
 
 .week-calendar__day-of-week-button--highlight .week-calendar__day-of-week-number {
-  border-color: var(--color-green-600);
+  border: none;
 }
 
 .week-calendar__day-of-week-button--selected .week-calendar__day-of-week-number {
@@ -64,6 +64,7 @@
   display: grid;
   grid-template-columns: repeat(1, minmax(0, 1fr));
   padding: 0.5rem;
+  min-height: 2.5rem;
 }
 
 .week-calendar__all-day-list::after {
@@ -72,12 +73,43 @@
   bottom: 0;
   left: 0;
   right: 0;
-  height: 1px;
-  box-shadow: var(--box-shadow-md);
+  height: 0.5px;
+  background-color: var(--color-gray-300);
+  pointer-events: none;
 }
 
 .week-calendar__all-day-list-item {
   padding: 0 0.125rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.week-calendar__spanning-event {
+  position: absolute;
+  top: 0;
+  height: 1.75rem;
+  z-index: 1;
+  margin: 0.25rem 0;
+  padding: 0;
+}
+
+.week-calendar__spanning-event .event {
+  position: static !important;
+  height: 100%;
+  width: 100%;
+  border-radius: var(--border-radius-sm);
+  display: flex;
+  align-items: center;
+  padding: 0 0.5rem;
+  font-size: var(--font-size-sm);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
 }
 
 .week-calendar__content {
@@ -133,6 +165,29 @@
   background-color: var(--color-light-grun);
 }
 
+.week-calendar__current-time-indicator {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: var(--color-butt-grun);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.week-calendar__current-time-indicator::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  border-left: 8px solid var(--color-butt-grun);
+}
+
 @media (min-width: 768px) {
   .week-calendar__day-of-week-button {
     flex-direction: row;
@@ -146,6 +201,7 @@
 
   .week-calendar__day-of-week-button--highlight {
     border-color: var(--color-green-600);
+    border:1px solid var(--color-green-600);
   }
 
   .week-calendar__day-of-week-number {
@@ -175,6 +231,11 @@
   .week-calendar--day .week-calendar__all-day-list {
     grid-template-columns: repeat(1, minmax(0, 1fr));
   }
+  
+  .week-calendar__spanning-event {
+    left: calc(4.5rem + var(--span-left));
+    right: var(--span-right);
+  }
 
   .week-calendar__columns {
     grid-template-columns: repeat(7, minmax(0, 1fr));
@@ -184,3 +245,4 @@
     grid-template-columns: repeat(1, minmax(0, 1fr));
   }
 }
+

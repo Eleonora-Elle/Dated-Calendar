@@ -35,7 +35,7 @@
   display: -webkit-box;
   -webkit-line-clamp: var(--event-title-max-lines);
   -webkit-box-orient: vertical;
-  line-clamp: var(--event-title-max-lines);     /* Standard property */
+  line-clamp: var(--event-title-max-lines);  
   overflow: hidden;
   text-overflow: ellipsis;
 }

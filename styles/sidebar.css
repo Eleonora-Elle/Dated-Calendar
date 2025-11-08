@@ -13,3 +13,10 @@
     gap: 0.5rem;
     font-weight: 500;
 }
+
+.sidebar__title {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    transform: translateX(-1rem);
+}

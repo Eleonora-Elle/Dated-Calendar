@@ -16,6 +16,7 @@
 @import "./toaster.css";
 @import "./week-calendar.css";
 @import "./responsive.css";
+@import "./year-month-select.css";
 
 
 * {
@@ -89,8 +90,22 @@ height: 100%;
 }
 
 .calendar {
- height: 100%;
+    position: relative;
+    height: 100%;
+    padding-bottom: 2rem;
 }
+
+.calendar::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 2rem;
+    height: 1px;
+    background-color: var(--color-gray-300);
+    pointer-events: none;
+}
+
 
 @media (min-width: 768px) {
     .app{

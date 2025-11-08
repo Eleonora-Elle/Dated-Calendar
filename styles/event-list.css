@@ -8,3 +8,38 @@
 .event-list__item {
     display: flex;
 }
+
+.month-calendar__day .event-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.month-calendar__day .event-list__item {
+    width: 100%;
+}
+
+/* All-day events (event--filled) stay in row */
+.month-calendar__day .event-list__item:has(.event--filled) {
+    width: auto;
+    flex: 0 0 auto;
+}
+
+/* Week view: all-day events in row */
+.week-calendar__all-day-list-item .event-list {
+    flex-direction: row;
+    gap: 0rem;
+}
+
+.week-calendar__all-day-list-item .event-list__item {
+    width: 20px;
+}
+
+/* Day view: all-day events stretch equally in row */
+.week-calendar--day .week-calendar__all-day-list-item .event-list {
+    flex-direction: row;
+    gap: 0.25rem;
+}
+
+.week-calendar--day .week-calendar__all-day-list-item .event-list__item {
+    flex: 1;
+}
