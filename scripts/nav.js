@@ -1,7 +1,7 @@
 import { today, addDays, addMonths, subtractDays, subtractMonths } from "./date.js";
 import { getUrlDate, getUrlView } from "./url.js";
 
-const dateFormatter = new Intl.DateTimeFormat("en-GB", {
+const dateFormatter = new Intl.DateTimeFormat("sl-SI", {
   month: "long",
   year: "numeric"
 });

@@ -1,0 +1,53 @@
+.year-month-select {
+  padding: 1rem;
+}
+
+
+.year-month-select__years {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(17, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.year-month-select__months {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+.year-month-select__year,
+.year-month-select__month {
+  width: 100%;
+  padding: 0.5rem;
+  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.year-month-select__years:hover,
+.year-month-select__months:hover {
+  background-color: var(--color-gray-200);
+}
+
+[data-year-month-dialog] .dialog__header {
+  position: relative;
+  justify-content: center;
+}
+
+[data-year-month-dialog] [data-dialog-close-button] {
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.year-month-select__year--current {
+  color: var(--color-text-dark);
+  border: 1px solid var(--color-gray-300);
+  background-color: var(--color-gray-300);
+}
+

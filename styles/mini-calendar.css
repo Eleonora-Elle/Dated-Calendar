@@ -13,6 +13,7 @@
 .mini-calendar__date {
   font-size: var(--font-size-sm);
   line-height: var(--line-height-sm);
+  margin-left: 0.75rem;
 }
 
 .mini-calendar__controls {

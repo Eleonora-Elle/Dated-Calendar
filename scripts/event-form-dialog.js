@@ -10,7 +10,7 @@ export function initEventFormDialog() {
   const dialogTitleElement = dialog.dialogElement.querySelector("[data-dialog-title]");
 
   document.addEventListener("event-create-request", (event) => {
-    dialogTitleElement.textContent = "Create event";
+    dialogTitleElement.textContent = "Ustvari dogodek";
     eventForm.switchToCreateMode(
       event.detail.date,
       event.detail.startTime,

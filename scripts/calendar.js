@@ -6,26 +6,47 @@ import { getUrlDate, getUrlView } from "./url.js";
 export function initCalendar(eventStore) {
   const calendarElement = document.querySelector("[data-calendar]");
 
+  if (!calendarElement) {
+    console.error("Calendar element not found!");
+    return;
+  }
+
   let selectedView = getUrlView();
   let selectedDate = getUrlDate();
   let deviceType = currentDeviceType();
+  let isRefreshing = false; // Prevent multiple simultaneous refreshes
 
   function refreshCalendar() {
-    const calendarScrollableElement = calendarElement.querySelector("[data-calendar-scrollable]");
+    if (isRefreshing) return;
+    isRefreshing = true;
+    
+    try {
+      const calendarScrollableElement = calendarElement.querySelector("[data-calendar-scrollable]");
 
-    const scrollTop = calendarScrollableElement === null ? 0 : calendarScrollableElement.scrollTop;
+      const scrollTop = calendarScrollableElement === null ? 0 : calendarScrollableElement.scrollTop;
 
-    calendarElement.replaceChildren();
+      calendarElement.replaceChildren();
 
-    if (selectedView === "month") {
-      initMonthCalendar(calendarElement, selectedDate, eventStore);
-    } else if (selectedView === "week") {
-      initWeekCalendar(calendarElement, selectedDate, eventStore, false, deviceType);
-    } else {
-      initWeekCalendar(calendarElement, selectedDate, eventStore, true, deviceType);
+      if (selectedView === "month") {
+        initMonthCalendar(calendarElement, selectedDate, eventStore);
+      } else if (selectedView === "week") {
+        initWeekCalendar(calendarElement, selectedDate, eventStore, false, deviceType);
+      } else {
+        initWeekCalendar(calendarElement, selectedDate, eventStore, true, deviceType);
+      }
+
+      // Restore scroll position after a brief delay to ensure DOM is ready
+      setTimeout(() => {
+        const newScrollableElement = calendarElement.querySelector("[data-calendar-scrollable]");
+        if (newScrollableElement) {
+          newScrollableElement.scrollTo({ top: scrollTop });
+        }
+        isRefreshing = false;
+      }, 0);
+    } catch (error) {
+      console.error("Error refreshing calendar:", error);
+      isRefreshing = false;
     }
-
-    calendarElement.querySelector("[data-calendar-scrollable]").scrollTo({ top: scrollTop });
   }
 
   document.addEventListener("view-change", (event) => {
